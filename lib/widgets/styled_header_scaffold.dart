@@ -1,6 +1,9 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../theme/app_theme.dart';
+import 'nekosim_glass.dart';
 
 /// A reusable scaffold with a stylized header for secondary pages
 /// Automatically handles safe area padding for mobile devices
@@ -41,26 +44,35 @@ class StyledHeaderScaffold extends StatelessWidget {
       ),
       child: Scaffold(
         backgroundColor: theme.scaffoldBackgroundColor,
-        body: Column(
-          children: [
-            // Custom Header with safe area padding
-            Container(
-              padding: EdgeInsets.fromLTRB(
-                12,
-                (compact ? 8 : 12) +
-                    MediaQuery.of(
-                      context,
-                    ).padding.top, // Add top safe area padding
-                16,
-                compact ? 8 : 12,
-              ),
-              decoration: BoxDecoration(
-                color: theme.colorScheme.surface,
-                border: Border(
-                  bottom: BorderSide(color: theme.dividerColor, width: 1),
-                ),
-              ),
-              child: Row(
+        body: GlassAmbientBackground(
+          child: Column(
+            children: [
+              // Frosted header with safe area padding
+              ClipRect(
+                child: BackdropFilter(
+                  filter: ImageFilter.blur(sigmaX: 18, sigmaY: 18),
+                  child: Container(
+                    padding: EdgeInsets.fromLTRB(
+                      12,
+                      (compact ? 8 : 12) +
+                          MediaQuery.of(
+                            context,
+                          ).padding.top, // Add top safe area padding
+                      16,
+                      compact ? 8 : 12,
+                    ),
+                    decoration: BoxDecoration(
+                      color: theme.colorScheme.surface
+                          .withValues(alpha: isDark ? 0.55 : 0.6),
+                      border: Border(
+                        bottom: BorderSide(
+                          color: (isDark ? Colors.white : Colors.black)
+                              .withValues(alpha: isDark ? 0.10 : 0.06),
+                          width: 1,
+                        ),
+                      ),
+                    ),
+                    child: Row(
                 children: [
                   if (logoAsset != null) ...[
                     Image.asset(logoAsset!, height: 24),
@@ -127,14 +139,17 @@ class StyledHeaderScaffold extends StatelessWidget {
                           ),
                     ),
                   ),
-                  // Optional actions
-                  ...?actions,
-                ],
+                        // Optional actions
+                        ...?actions,
+                      ],
+                    ),
+                  ),
+                ),
               ),
-            ),
-            // Body content
-            Expanded(child: body),
-          ],
+              // Body content
+              Expanded(child: body),
+            ],
+          ),
         ),
       ),
     );

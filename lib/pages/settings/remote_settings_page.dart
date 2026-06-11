@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../settings/app_settings.dart';
 import '../../theme/app_theme.dart';
+import '../../widgets/nekosim_glass.dart';
 import '../../widgets/styled_header_scaffold.dart';
 import '../../l10n/app_localizations.dart';
 import '../../adapter/remote/remocard_adapter.dart';
@@ -138,10 +139,9 @@ class _RemoteSettingsPageState extends State<RemoteSettingsPage> {
               // Add New URL Section
               Container(
                 padding: const EdgeInsets.all(20),
-                decoration: BoxDecoration(
-                  color: theme.colorScheme.surface,
-                  borderRadius: BorderRadius.circular(24),
-                  border: Border.all(color: AppTheme.surfaceSubtle(context)),
+                decoration: glassCardDecoration(
+                  context,
+                  borderRadius: const BorderRadius.all(Radius.circular(24)),
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -404,10 +404,9 @@ class _RemoteSettingsPageState extends State<RemoteSettingsPage> {
               // Default Configuration Section
               Container(
                 padding: const EdgeInsets.all(20),
-                decoration: BoxDecoration(
-                  color: theme.colorScheme.surface,
-                  borderRadius: BorderRadius.circular(24),
-                  border: Border.all(color: AppTheme.surfaceSubtle(context)),
+                decoration: glassCardDecoration(
+                  context,
+                  borderRadius: const BorderRadius.all(Radius.circular(24)),
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -587,10 +586,9 @@ class _RemoteSettingsPageState extends State<RemoteSettingsPage> {
 
               Container(
                 padding: const EdgeInsets.all(20),
-                decoration: BoxDecoration(
-                  color: theme.colorScheme.surface,
-                  borderRadius: BorderRadius.circular(24),
-                  border: Border.all(color: AppTheme.surfaceSubtle(context)),
+                decoration: glassCardDecoration(
+                  context,
+                  borderRadius: const BorderRadius.all(Radius.circular(24)),
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -621,15 +619,10 @@ class _RemoteSettingsPageState extends State<RemoteSettingsPage> {
   }
 
   Widget _buildUrlCard(BuildContext context, String url) {
-    final theme = Theme.of(context);
     return Container(
       margin: const EdgeInsets.only(bottom: 12),
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-      decoration: BoxDecoration(
-        color: theme.colorScheme.surface,
-        borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: AppTheme.surfaceSubtle(context)),
-      ),
+      decoration: glassCardDecoration(context),
       child: Row(
         children: [
           Container(

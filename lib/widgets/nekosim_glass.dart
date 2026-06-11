@@ -47,6 +47,32 @@ class GlassSurface extends StatelessWidget {
   }
 }
 
+/// Decoration-only variant of [GlassCard] for widgets that need to stay
+/// plain [Container]s (own padding, custom layout).
+BoxDecoration glassCardDecoration(
+  BuildContext context, {
+  BorderRadius borderRadius = const BorderRadius.all(Radius.circular(20)),
+}) {
+  final theme = Theme.of(context);
+  final isDark = theme.brightness == Brightness.dark;
+  return BoxDecoration(
+    color: theme.colorScheme.surface.withValues(alpha: isDark ? 0.62 : 0.72),
+    borderRadius: borderRadius,
+    border: Border.all(
+      width: 1,
+      color: (isDark ? Colors.white : Colors.black)
+          .withValues(alpha: isDark ? 0.10 : 0.06),
+    ),
+    boxShadow: [
+      BoxShadow(
+        color: Colors.black.withValues(alpha: isDark ? 0.25 : 0.05),
+        blurRadius: 16,
+        offset: const Offset(0, 6),
+      ),
+    ],
+  );
+}
+
 /// Cheap glass-look card for scrolling lists: translucent surface and
 /// hairline border over the ambient background, no per-item BackdropFilter.
 class GlassCard extends StatelessWidget {
@@ -63,26 +89,8 @@ class GlassCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final isDark = theme.brightness == Brightness.dark;
     return Container(
-      decoration: BoxDecoration(
-        color: theme.colorScheme.surface
-            .withValues(alpha: isDark ? 0.62 : 0.72),
-        borderRadius: borderRadius,
-        border: Border.all(
-          width: 1,
-          color: (isDark ? Colors.white : Colors.black)
-              .withValues(alpha: isDark ? 0.10 : 0.06),
-        ),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(alpha: isDark ? 0.25 : 0.05),
-            blurRadius: 16,
-            offset: const Offset(0, 6),
-          ),
-        ],
-      ),
+      decoration: glassCardDecoration(context, borderRadius: borderRadius),
       clipBehavior: Clip.antiAlias,
       child: Material(
         color: Colors.transparent,

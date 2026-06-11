@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../settings/app_settings.dart';
 import '../../theme/app_theme.dart';
+import '../../widgets/nekosim_glass.dart';
 import '../../widgets/styled_header_scaffold.dart';
 import '../../services/database_service.dart';
 import '../../services/operator_icon_service.dart';
@@ -61,13 +62,7 @@ class _StatsSettingsPageState extends State<StatsSettingsPage> {
   }
 
   Widget _buildMainToggle(BuildContext context, AppSettings settings) {
-    final theme = Theme.of(context);
-    return Container(
-      decoration: BoxDecoration(
-        color: theme.colorScheme.surface,
-        borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: AppTheme.surfaceSubtle(context)),
-      ),
+    return GlassCard(
       child: _buildSwitchRow(
         context,
         title: "Enable Nekoko Cloud",
@@ -79,15 +74,9 @@ class _StatsSettingsPageState extends State<StatsSettingsPage> {
   }
 
   Widget _buildSecondaryOptions(BuildContext context, AppSettings settings) {
-    final theme = Theme.of(context);
     final enabled = settings.enableNekokoStats;
 
-    return Container(
-      decoration: BoxDecoration(
-        color: theme.colorScheme.surface,
-        borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: AppTheme.surfaceSubtle(context)),
-      ),
+    return GlassCard(
       child: Column(
         children: [
           _buildSwitchRow(

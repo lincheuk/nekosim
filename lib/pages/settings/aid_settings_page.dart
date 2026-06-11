@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../../settings/app_settings.dart';
 import '../../theme/app_theme.dart';
+import '../../widgets/nekosim_glass.dart';
 import '../../widgets/styled_header_scaffold.dart';
 import '../../l10n/app_localizations.dart';
 
@@ -141,12 +142,10 @@ class _AidSettingsPageState extends State<AidSettingsPage> {
                     child: const Icon(Icons.delete, color: Colors.white),
                   ),
                   child: Container(
-                    decoration: BoxDecoration(
-                      color: theme.colorScheme.surface,
-                      borderRadius: BorderRadius.circular(12),
-                      border: Border.all(
-                        color: AppTheme.surfaceSubtle(context),
-                      ),
+                    decoration: glassCardDecoration(
+                      context,
+                      borderRadius:
+                          const BorderRadius.all(Radius.circular(12)),
                     ),
                     child: ListTile(
                       title: Text(

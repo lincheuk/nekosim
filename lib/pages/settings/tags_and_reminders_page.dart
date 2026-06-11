@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart'
 import 'package:permission_handler/permission_handler.dart';
 import '../../settings/app_settings.dart';
 import '../../theme/app_theme.dart';
+import '../../widgets/nekosim_glass.dart';
 import '../../widgets/styled_header_scaffold.dart';
 import '../../l10n/app_localizations.dart';
 import '../../l10n/nekosim_strings.dart';
@@ -206,62 +207,7 @@ class _TagsAndRemindersPageState extends State<TagsAndRemindersPage> {
     required String title,
     required List<Widget> children,
   }) {
-    final theme = Theme.of(context);
-
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Padding(
-          padding: const EdgeInsets.only(left: 8, bottom: 12),
-          child: Text(
-            title.toUpperCase(),
-            style: TextStyle(
-              fontSize: 12,
-              fontWeight: FontWeight.w900,
-              color: theme.colorScheme.primary,
-              letterSpacing: 2.0,
-            ),
-          ),
-        ),
-        Container(
-          decoration: BoxDecoration(
-            color: theme.colorScheme.surface,
-            borderRadius: BorderRadius.circular(24),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withValues(
-                  alpha: theme.brightness == Brightness.dark ? 0.3 : 0.04,
-                ),
-                blurRadius: 20,
-                offset: const Offset(0, 8),
-              ),
-            ],
-          ),
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(24),
-            child: Column(
-              children: [
-                for (int i = 0; i < children.length; i++) ...[
-                  children[i],
-                  if (i < children.length - 1) _buildDivider(context),
-                ],
-              ],
-            ),
-          ),
-        ),
-      ],
-    );
-  }
-
-  Widget _buildDivider(BuildContext context) {
-    final theme = Theme.of(context);
-    return Divider(
-      height: 1,
-      indent: 72,
-      color: theme.dividerColor.withValues(
-        alpha: theme.brightness == Brightness.dark ? 0.1 : 0.05,
-      ),
-    );
+    return GlassSection(title: title, children: children);
   }
 
   Widget _buildResponsiveTile(

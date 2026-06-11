@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../settings/app_settings.dart';
 import '../../theme/app_theme.dart';
+import '../../widgets/nekosim_glass.dart';
 import '../../widgets/styled_header_scaffold.dart';
 import '../../widgets/common/reader_api_icon.dart';
 import '../../utils/platform_adapter.dart';
@@ -104,30 +105,15 @@ class ReaderTypesSettingsPage extends StatelessWidget {
             ],
           ),
         ),
-        Container(
-          decoration: BoxDecoration(
-            color: theme.colorScheme.surface,
-            borderRadius: BorderRadius.circular(24),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withValues(
-                  alpha: theme.brightness == Brightness.dark ? 0.3 : 0.04,
-                ),
-                blurRadius: 20,
-                offset: const Offset(0, 8),
-              ),
-            ],
-          ),
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(24),
-            child: Column(
-              children: [
-                for (int i = 0; i < children.length; i++) ...[
-                  children[i],
-                  if (i < children.length - 1) _buildDivider(context),
-                ],
+        GlassCard(
+          borderRadius: const BorderRadius.all(Radius.circular(24)),
+          child: Column(
+            children: [
+              for (int i = 0; i < children.length; i++) ...[
+                children[i],
+                if (i < children.length - 1) _buildDivider(context),
               ],
-            ),
+            ],
           ),
         ),
       ],

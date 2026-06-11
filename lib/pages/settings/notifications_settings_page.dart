@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import '../../settings/app_settings.dart';
 import '../../theme/app_theme.dart';
+import '../../widgets/nekosim_glass.dart';
 import '../../widgets/styled_header_scaffold.dart';
 import '../../l10n/app_localizations.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
@@ -175,14 +176,7 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage> {
     required String description,
     required List<_TimingToggleRow> rows,
   }) {
-    final theme = Theme.of(context);
-
-    return Container(
-      decoration: BoxDecoration(
-        color: theme.colorScheme.surface,
-        borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: AppTheme.surfaceSubtle(context)),
-      ),
+    return GlassCard(
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -243,15 +237,9 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage> {
     required Function(bool) onRemoveChanged,
     required Function(bool)? onDeleteWithoutSendingChanged,
   }) {
-    final theme = Theme.of(context);
     final isDangerMode = deleteWithoutSendingValue == true;
 
-    return Container(
-      decoration: BoxDecoration(
-        color: theme.colorScheme.surface,
-        borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: AppTheme.surfaceSubtle(context)),
-      ),
+    return GlassCard(
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [

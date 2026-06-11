@@ -1055,8 +1055,7 @@ class _NekoSimAssetEditPageState extends State<NekoSimAssetEditPage> {
     return StyledHeaderScaffold(
       title: t.simAsset,
       actions: [TextButton(onPressed: _save, child: Text(t.save))],
-      body: GlassAmbientBackground(
-        child: ListView(
+      body: ListView(
         padding: const EdgeInsets.all(16),
         children: [
           GlassCard(
@@ -1101,7 +1100,6 @@ class _NekoSimAssetEditPageState extends State<NekoSimAssetEditPage> {
           _field(_activation, t.activationCode, Icons.key_rounded, mono: true),
           _field(_note, t.note, Icons.notes_rounded, minLines: 3, maxLines: 6),
         ],
-        ),
       ),
     );
   }

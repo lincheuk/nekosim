@@ -131,10 +131,9 @@ class _NekoSimCloudPageState extends State<NekoSimCloudPage> {
 
     return StyledHeaderScaffold(
       title: t.cloudReminders,
-      body: GlassAmbientBackground(
-        child: AbsorbPointer(
-          absorbing: _busy,
-          child: ListView(
+      body: AbsorbPointer(
+        absorbing: _busy,
+        child: ListView(
             padding: const EdgeInsets.all(16),
             children: [
               GlassSection(
@@ -367,7 +366,6 @@ class _NekoSimCloudPageState extends State<NekoSimCloudPage> {
               ),
               const SizedBox(height: 24),
             ],
-          ),
         ),
       ),
     );

@@ -218,16 +218,15 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return const _AppSettingsScope(child: _RootMaterialApp());
+    return const _AppSettingsScope();
   }
 }
 
-/// Rebuilds its child only when AppSettings fields that affect MaterialApp
+/// Rebuilds the MaterialApp only when AppSettings fields that affect it
 /// (themeMode, themeType, locale) change. Avoids rebuilding the whole app on
 /// unrelated settings updates like setOnline or setLastSelectedReader.
 class _AppSettingsScope extends StatefulWidget {
-  final Widget child;
-  const _AppSettingsScope({required this.child});
+  const _AppSettingsScope();
 
   @override
   State<_AppSettingsScope> createState() => _AppSettingsScopeState();
@@ -268,15 +267,27 @@ class _AppSettingsScopeState extends State<_AppSettingsScope> {
   }
 
   @override
-  Widget build(BuildContext context) => widget.child;
+  Widget build(BuildContext context) => _RootMaterialApp(
+        themeMode: _themeMode,
+        themeType: _themeType,
+        locale: _locale,
+      );
 }
 
 class _RootMaterialApp extends StatelessWidget {
-  const _RootMaterialApp();
+  final ThemeMode themeMode;
+  final AppThemeType themeType;
+  final String? locale;
+
+  const _RootMaterialApp({
+    required this.themeMode,
+    required this.themeType,
+    required this.locale,
+  });
 
   @override
   Widget build(BuildContext context) {
-    final loc = AppSettings().locale;
+    final loc = locale;
     Locale? resolvedLocale;
     if (loc != null) {
       final parts = loc.replaceAll('-', '_').split('_');
@@ -289,9 +300,9 @@ class _RootMaterialApp extends StatelessWidget {
       navigatorKey: navigatorKey,
       scaffoldMessengerKey: scaffoldMessengerKey,
       title: AppConfig.appName,
-      theme: AppTheme.theme(false),
-      darkTheme: AppTheme.theme(true),
-      themeMode: AppSettings().themeMode,
+      theme: AppTheme.theme(false, themeType),
+      darkTheme: AppTheme.theme(true, themeType),
+      themeMode: themeMode,
       locale: resolvedLocale,
       home: const MainTabScreen(),
       routes: PluginManager().allRoutes,

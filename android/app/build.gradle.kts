@@ -83,7 +83,10 @@ android {
     productFlavors {
         create("community") {
             dimension = "version"
-            applicationId = "ee.nekoko.nlpa2.open"
+            // NekoSim identity. namespace stays ee.nekoko.nlpa2 on purpose:
+            // it keeps Kotlin sources and the OTBridge/NBridge integration
+            // paths untouched while the installed package id is our own.
+            applicationId = "io.github.lincheuk.nekosim"
             manifestPlaceholders["appName"] = "NekoSim"
             if (hasSigningValues("community")) {
                 signingConfig = signingConfigs.getByName("community")
@@ -93,7 +96,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "ee.nekoko.nlpa2.open"
+        applicationId = "io.github.lincheuk.nekosim"
         minSdk = flutter.minSdkVersion
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode

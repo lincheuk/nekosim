@@ -59,9 +59,9 @@ class LocalNotificationService {
     // guid can be any stable GUID (generate your own if you fork/rename).
     const fln.WindowsInitializationSettings initializationSettingsWindows =
         fln.WindowsInitializationSettings(
-          appName: 'nlpa2',
-          appUserModelId: 'ee.nekoko.nlpa2',
-          guid: '5d6d4a8f-0b1f-4b8b-bd7b-8d7f9c9b5c2a',
+          appName: 'NekoSim',
+          appUserModelId: 'io.github.lincheuk.nekosim',
+          guid: 'f12b5307-8b4a-436c-ab30-9e6721e8f59d',
         );
 
     // Harmless on Windows/macOS/iOS; useful if Linux desktop is enabled later.

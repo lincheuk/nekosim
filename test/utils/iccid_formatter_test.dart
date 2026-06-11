@@ -1,5 +1,5 @@
-import 'package:flutter_test/flutter_test.dart';
-import 'package:nlpa2/utils/iccid_formatter.dart';
+﻿import 'package:flutter_test/flutter_test.dart';
+import 'package:nekosim/utils/iccid_formatter.dart';
 
 void main() {
   group('IccidFormatter', () {

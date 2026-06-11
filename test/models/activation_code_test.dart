@@ -1,5 +1,5 @@
-import 'package:flutter_test/flutter_test.dart';
-import 'package:nlpa2/models/activation_code.dart';
+﻿import 'package:flutter_test/flutter_test.dart';
+import 'package:nekosim/models/activation_code.dart';
 
 void main() {
   group('ActivationCode', () {

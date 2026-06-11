@@ -109,8 +109,13 @@ class _NekoSimCloudPageState extends State<NekoSimCloudPage> {
   Future<void> _run(Future<CloudResult> Function() op, {String? okText}) async {
     final t = NekoSimStrings.of(context);
     setState(() => _busy = true);
-    await _saveConfig();
-    final res = await op();
+    CloudResult res;
+    try {
+      await _saveConfig();
+      res = await op();
+    } catch (e) {
+      res = CloudResult(false, e.toString());
+    }
     if (!mounted) return;
     setState(() {
       _busy = false;

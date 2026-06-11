@@ -1691,6 +1691,16 @@ class SettingsPage extends StatelessWidget {
           tapCount++;
 
           if (tapCount >= 20) {
+            if (!AppSettings().developerModeEnabled) {
+              await AppSettings().setDeveloperModeEnabled(true);
+              if (dialogContext.mounted) {
+                ScaffoldMessenger.of(dialogContext).showSnackBar(
+                  const SnackBar(
+                    content: Text('You are now a pro! Developer mode enabled.'),
+                  ),
+                );
+              }
+            }
             return;
           }
 

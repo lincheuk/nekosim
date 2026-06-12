@@ -1,4 +1,4 @@
-name: Build NekokoLPA2
+name: Build NekoSim
 
 on:
   push:
@@ -11,7 +11,7 @@ permissions:
   contents: write
 
 env:
-  PACKAGE_ID: ee.nekoko.nlpa2.open
+  PACKAGE_ID: io.github.lincheuk.nekosim
   FLAVOR: community
 
 jobs:
@@ -121,7 +121,7 @@ jobs:
           cp -r "$BUNDLE"/. "$APPDIR/"
           cat > "$APPDIR/${PACKAGE_ID}.desktop" <<EOF
           [Desktop Entry]
-          Name=NekokoLPA 2 Community
+          Name=NekoSim Community
           Exec=nlpa2
           Icon=${PACKAGE_ID}
           Type=Application
@@ -213,7 +213,7 @@ jobs:
           tag_name="v$VERSION"
           release_notes="$(awk -v ver="[$VERSION]" 'index($0, "## " ver) == 1 {p=1; next} p && /^## \[/ {p=0} p' CHANGELOG.md | sed '/^$/d' | head -n 20)"
           if [ -z "$release_notes" ]; then
-            release_notes="Public builds for NekokoLPA2 v$VERSION"
+            release_notes="Public builds for NekoSim v$VERSION"
           fi
 
           artifact_table="$(cat <<EOF
@@ -236,10 +236,10 @@ jobs:
 
           if gh release view "$tag_name" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
             gh release edit "$tag_name" --repo "$GITHUB_REPOSITORY" \
-              --title "NekokoLPA2 $tag_name" --notes "$full_notes"
+              --title "NekoSim $tag_name" --notes "$full_notes"
           else
             gh release create "$tag_name" --repo "$GITHUB_REPOSITORY" \
-              --title "NekokoLPA2 $tag_name" --notes "$full_notes"
+              --title "NekoSim $tag_name" --notes "$full_notes"
           fi
 
           shopt -s nullglob

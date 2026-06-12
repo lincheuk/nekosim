@@ -1,6 +1,26 @@
 # Changelog
 
-All notable changes to NekokoLPA2 will be documented in this file.
+All notable changes to NekoSim will be documented in this file.
+
+## [1.0.0+570] - 2026-06-13
+
+First public release of NekoSim, an independent fork of NekokoLPA2 that adds a SIM/eSIM asset management layer.
+
+### Added
+- SIM/eSIM asset library: track carrier, plan, cost, validity period, purchase channel, and notes for every card you own.
+- Two-way linking between asset records and the eSIM profiles detected on your cards.
+- Expiry reminders: local scheduled notifications that survive reboots, plus optional cloud reminders via a self-hostable SimJiang-protocol server.
+- Asset import/export for backup and migration.
+- Search, filter, and sort across carriers, tags, and validity status.
+- Profile import via QR scan, image recognition, or pasted activation codes.
+- NekoSim strings in 9 languages: English, Simplified/Traditional Chinese, Japanese, Korean, German, Spanish, French, and Italian.
+
+### Changed
+- Rebranded the app as NekoSim with its own application id (`io.github.lincheuk.nekosim`), installer identity, and glassmorphism design system across asset pages and eSIM management chrome.
+
+---
+
+Entries below are inherited from the upstream NekokoLPA2 changelog.
 
 ## [2.1.0+569] - 2026-06-01
 

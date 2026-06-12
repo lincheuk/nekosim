@@ -1,10 +1,10 @@
-; Inno Setup Installer Script for NekokoLPA2 (community public build).
+; Inno Setup Installer Script for NekoSim (community public build).
 ; Compiled with Inno Setup Compiler (ISCC.exe).
 
-#define AppName "NekokoLPA 2 Community"
-#define AppShortName "nlpa2"
-#define AppPublisher "ee.nekoko"
-#define AppURL "https://github.com/iebb/NekokoLPA2"
+#define AppName "NekoSim Community"
+#define AppShortName "nekosim"
+#define AppPublisher "CyberPulse"
+#define AppURL "https://github.com/lincheuk/nekosim"
 #define AppExeName "nlpa2.exe"
 
 #ifndef AppVersion
@@ -17,7 +17,7 @@
 #define AppVersionFull AppVersion + "." + AppBuildNumber
 
 [Setup]
-AppId={{B0C7D5A1-2E4F-4F4A-9A2B-71F0C2C2A9E1}
+AppId={{8831809D-E61C-43B8-A60E-82CD4681AC8D}
 AppName={#AppName}
 AppVersion={#AppVersionFull}
 AppVerName={#AppName} {#AppVersionFull}
@@ -25,11 +25,11 @@ AppPublisher={#AppPublisher}
 AppPublisherURL={#AppURL}
 AppSupportURL={#AppURL}
 AppUpdatesURL={#AppURL}
-DefaultDirName={autopf}\NekokoLPA2
+DefaultDirName={autopf}\NekoSim
 DefaultGroupName={#AppName}
 AllowNoIcons=yes
 OutputDir=..\build\windows\installer
-OutputBaseFilename=ee.nekoko.nlpa2.open-{#AppVersion}-{#AppBuildNumber}-setup
+OutputBaseFilename=io.github.lincheuk.nekosim-{#AppVersion}-{#AppBuildNumber}-setup
 SetupIconFile=..\windows\runner\resources\app_icon.ico
 Compression=lzma
 SolidCompression=yes
@@ -42,7 +42,7 @@ VersionInfoCompany={#AppPublisher}
 VersionInfoDescription={#AppName}
 VersionInfoProductName={#AppName}
 VersionInfoProductVersion={#AppVersionFull}
-VersionInfoCopyright=Copyright (C) ee.nekoko. All rights reserved.
+VersionInfoCopyright=Copyright (C) 2026 CyberPulse. Based on NekokoLPA2 (C) Nekoko.
 
 [Languages]
 Name: "english"; MessagesFile: "compiler:Default.isl"

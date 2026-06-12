@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../models/asn1/rsp_definitions.g.dart';
 import '../theme/app_theme.dart';
 import '../utils/hex_utils.dart';
+import 'nekosim_glass.dart';
 import '../l10n/app_localizations.dart';
 
 class EuiccInfoDialog {
@@ -73,9 +74,7 @@ class EuiccInfoDialog {
               constraints: BoxConstraints(
                 maxHeight: MediaQuery.of(context).size.height * 0.8,
               ),
-              padding: const EdgeInsets.all(24),
               decoration: BoxDecoration(
-                color: theme.colorScheme.surface,
                 borderRadius: BorderRadius.circular(28),
                 boxShadow: [
                   BoxShadow(
@@ -84,9 +83,11 @@ class EuiccInfoDialog {
                     offset: const Offset(0, 15),
                   ),
                 ],
-                border: Border.all(color: theme.dividerColor),
               ),
-              child: Material(
+              child: GlassSurface(
+                borderRadius: const BorderRadius.all(Radius.circular(28)),
+                padding: const EdgeInsets.all(24),
+                child: Material(
                 color: Colors.transparent,
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
@@ -245,6 +246,7 @@ class EuiccInfoDialog {
                       ),
                     ),
                   ],
+                ),
                 ),
               ),
             ),

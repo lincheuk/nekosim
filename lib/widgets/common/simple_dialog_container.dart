@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../theme/app_theme.dart';
+import '../nekosim_glass.dart';
 import 'loading_spinner.dart';
 import '../../utils/platform_adapter.dart';
 
@@ -43,8 +44,6 @@ class SimpleDialogContainer extends StatelessWidget {
           constraints: const BoxConstraints(maxHeight: 600),
           margin: EdgeInsets.all(isSmallScreen ? 12 : 24),
           decoration: BoxDecoration(
-            color: theme.colorScheme.surface,
-            borderRadius: BorderRadius.circular(isSmallScreen ? 20 : 24),
             boxShadow: [
               BoxShadow(
                 color: Colors.black.withValues(alpha: 0.2),
@@ -52,8 +51,12 @@ class SimpleDialogContainer extends StatelessWidget {
                 offset: const Offset(0, 10),
               ),
             ],
+            borderRadius: BorderRadius.circular(isSmallScreen ? 20 : 24),
           ),
-          child: Column(
+          child: GlassSurface(
+            borderRadius:
+                BorderRadius.all(Radius.circular(isSmallScreen ? 20 : 24)),
+            child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               // Header
@@ -153,6 +156,7 @@ class SimpleDialogContainer extends StatelessWidget {
                   ),
                 ),
             ],
+            ),
           ),
         ),
       ),

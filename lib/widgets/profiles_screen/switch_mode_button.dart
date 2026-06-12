@@ -27,7 +27,9 @@ class SwitchModeButton extends StatelessWidget {
       height: buttonHeight,
       child: Container(
         decoration: BoxDecoration(
-          color: theme.colorScheme.surface,
+          color: theme.colorScheme.surface.withValues(
+            alpha: theme.brightness == Brightness.dark ? 0.62 : 0.72,
+          ),
           borderRadius: BorderRadius.circular(14),
           border: Border.all(
             color: theme.colorScheme.primary.withValues(alpha: 0.15),

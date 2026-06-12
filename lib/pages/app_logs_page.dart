@@ -132,7 +132,9 @@ class _AppLogsPageState extends State<AppLogsPage> {
           ),
           Container(
             padding: const EdgeInsets.all(8),
-            color: theme.colorScheme.surface,
+            color: theme.colorScheme.surface.withValues(
+              alpha: theme.brightness == Brightness.dark ? 0.55 : 0.6,
+            ),
             child: Row(
               children: [
                 IconButton(

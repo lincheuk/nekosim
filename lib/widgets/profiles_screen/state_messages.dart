@@ -455,7 +455,9 @@ class _ConnectOptionCardState extends State<_ConnectOptionCard> {
         ),
         child: Card(
           elevation: 0,
-          color: theme.colorScheme.surface,
+          color: theme.colorScheme.surface.withValues(
+            alpha: theme.brightness == Brightness.dark ? 0.62 : 0.72,
+          ),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20),
             side: BorderSide(

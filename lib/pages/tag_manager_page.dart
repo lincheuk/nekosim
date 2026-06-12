@@ -1,8 +1,9 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import '../services/profile_metadata_service.dart';
 import '../utils/profile_tag_utils.dart';
 import '../theme/app_theme.dart';
+import '../widgets/nekosim_glass.dart';
 import '../widgets/styled_header_scaffold.dart';
 import '../utils/iccid_formatter.dart';
 import '../l10n/app_localizations.dart';
@@ -195,10 +196,9 @@ class _TagManagerPageState extends State<TagManagerPage> {
 
     return Container(
       margin: const EdgeInsets.only(bottom: 12),
-      decoration: BoxDecoration(
-        color: theme.colorScheme.surface,
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: AppTheme.surfaceSubtle(context)),
+      decoration: glassCardDecoration(
+        context,
+        borderRadius: const BorderRadius.all(Radius.circular(16)),
       ),
       child: ExpansionTile(
         shape: const RoundedRectangleBorder(side: BorderSide.none),

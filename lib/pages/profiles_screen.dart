@@ -68,6 +68,7 @@ import '../services/deep_link_service.dart';
 import '../services/connectivity_service.dart';
 import '../services/nekosim_asset_service.dart';
 import '../l10n/nekosim_strings.dart';
+import '../widgets/nekosim_glass.dart';
 
 enum ReaderStatus {
   idle,
@@ -4461,7 +4462,8 @@ class _ProfilesScreenState extends State<ProfilesScreen>
                   bottom: null,
                 ),
               ),
-              body: Column(
+              body: GlassAmbientBackground(
+                child: Column(
                 children: [
                   ProfilesHeader(
                     isWide: isWide,
@@ -4661,6 +4663,7 @@ class _ProfilesScreenState extends State<ProfilesScreen>
                       ),
                     ),
                 ],
+                ),
               ),
               floatingActionButton:
                   (_profiles?.isNotEmpty ?? false) && !PlatformX.isMobile

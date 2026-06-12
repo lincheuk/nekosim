@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'profiles_screen.dart';
@@ -10,6 +12,7 @@ import '../plugins/plugin_manager.dart';
 import 'package:flutter/foundation.dart';
 import '../utils/platform_adapter.dart';
 import '../l10n/nekosim_strings.dart';
+import '../widgets/nekosim_glass.dart';
 
 Widget _buildNekoSimAssetsPage(BuildContext context) => const NekoSimAssetsPage();
 
@@ -138,18 +141,9 @@ class _MainTabScreenState extends State<MainTabScreen> {
                 child: AnimatedContainer(
                   duration: const Duration(milliseconds: 200),
                   padding: const EdgeInsets.all(4),
-                  decoration: BoxDecoration(
-                    color: theme.colorScheme.surfaceContainerHighest.withValues(
-                      alpha: 0.9,
-                    ),
-                    borderRadius: BorderRadius.circular(24),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withValues(alpha: 0.1),
-                        blurRadius: 8,
-                        offset: const Offset(0, 2),
-                      ),
-                    ],
+                  decoration: glassCardDecoration(
+                    context,
+                    borderRadius: const BorderRadius.all(Radius.circular(24)),
                   ),
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
@@ -231,22 +225,36 @@ class _MainTabScreenState extends State<MainTabScreen> {
     return Scaffold(
       body: body,
       bottomNavigationBar: (showBottomBar && !isDesktop)
-          ? Container(
-              decoration: BoxDecoration(
-                color: theme.colorScheme.surface.withValues(alpha: 0.95),
-                border: Border(
-                  top: BorderSide(
-                    color: theme.dividerColor.withValues(alpha: 0.1),
-                    width: 1,
+          ? ClipRect(
+              child: BackdropFilter(
+                filter: ImageFilter.blur(sigmaX: 18, sigmaY: 18),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: theme.colorScheme.surface.withValues(
+                      alpha: theme.brightness == Brightness.dark ? 0.55 : 0.6,
+                    ),
+                    border: Border(
+                      top: BorderSide(
+                        color: (theme.brightness == Brightness.dark
+                                ? Colors.white
+                                : Colors.black)
+                            .withValues(
+                          alpha: theme.brightness == Brightness.dark
+                              ? 0.10
+                              : 0.06,
+                        ),
+                        width: 1,
+                      ),
+                    ),
                   ),
-                ),
-              ),
-              child: SafeArea(
-                child: SizedBox(
-                  height: 56, // Shorter height
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: tabs,
+                  child: SafeArea(
+                    child: SizedBox(
+                      height: 56, // Shorter height
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: tabs,
+                      ),
+                    ),
                   ),
                 ),
               ),

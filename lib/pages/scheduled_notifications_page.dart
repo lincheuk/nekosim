@@ -1,6 +1,7 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import '../services/tag_notification_service.dart';
 import '../theme/app_theme.dart';
+import '../widgets/nekosim_glass.dart';
 import '../widgets/styled_header_scaffold.dart';
 import 'package:intl/intl.dart';
 import '../utils/iccid_formatter.dart';
@@ -98,10 +99,9 @@ class _ScheduledNotificationsPageState
 
     return Container(
       margin: const EdgeInsets.only(bottom: 12),
-      decoration: BoxDecoration(
-        color: theme.colorScheme.surface,
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: AppTheme.surfaceSubtle(context)),
+      decoration: glassCardDecoration(
+        context,
+        borderRadius: const BorderRadius.all(Radius.circular(16)),
       ),
       child: ListTile(
         leading: Container(

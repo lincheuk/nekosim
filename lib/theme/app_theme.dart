@@ -377,16 +377,18 @@ class AppTheme {
       );
     }
 
-    // Non-MD3 / Custom Theme: Uses explicit borders and transparency effects
+    // Non-MD3 / Custom Theme: glass-look card over the ambient background
+    final isDark = theme.brightness == Brightness.dark;
     return BoxDecoration(
       color: enabled
-          ? theme.colorScheme.primary.withValues(alpha: 0.12)
-          : theme.colorScheme.surface,
+          ? theme.colorScheme.primary.withValues(alpha: 0.14)
+          : theme.colorScheme.surface.withValues(alpha: isDark ? 0.62 : 0.72),
       borderRadius: BorderRadius.circular(20),
       border: Border.all(
         color: enabled
             ? theme.colorScheme.primary.withValues(alpha: 0.5)
-            : theme.dividerColor.withValues(alpha: 0.1),
+            : (isDark ? Colors.white : Colors.black)
+                .withValues(alpha: isDark ? 0.10 : 0.06),
         width: enabled ? 2 : 1,
       ),
       boxShadow: [

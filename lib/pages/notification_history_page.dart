@@ -8,6 +8,7 @@ import '../models/asn1/rsp_definitions.g.dart';
 import '../utils/iccid_formatter.dart';
 import '../theme/app_theme.dart';
 import '../widgets/common/simple_dialog_container.dart';
+import '../widgets/nekosim_glass.dart';
 import '../widgets/styled_header_scaffold.dart';
 import 'package:flutter/services.dart';
 import '../l10n/app_localizations.dart';
@@ -445,8 +446,6 @@ class _NotificationHistoryPageState extends State<NotificationHistoryPage> {
                     padding: const EdgeInsets.fromLTRB(20, 0, 20, 100),
                     itemCount: _filteredRecords.length,
                     itemBuilder: (context, index) {
-                      final theme = Theme.of(context);
-                      final isDark = theme.brightness == Brightness.dark;
                       final r = _filteredRecords[index];
                       final payloadLength = base64Decode(r.content).length;
                       final cleanedIccid = IccidFormatter.forDisplay(r.iccid);
@@ -496,21 +495,10 @@ class _NotificationHistoryPageState extends State<NotificationHistoryPage> {
 
                           return Container(
                             margin: const EdgeInsets.only(bottom: 12),
-                            decoration: BoxDecoration(
-                              color: theme.colorScheme.surface,
-                              borderRadius: BorderRadius.circular(16),
-                              border: Border.all(
-                                color: AppTheme.surfaceSubtle(context),
-                              ),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.black.withValues(
-                                    alpha: isDark ? 0.3 : 0.04,
-                                  ),
-                                  blurRadius: 20,
-                                  offset: const Offset(0, 8),
-                                ),
-                              ],
+                            decoration: glassCardDecoration(
+                              context,
+                              borderRadius:
+                                  const BorderRadius.all(Radius.circular(16)),
                             ),
                             child: Material(
                               color: Colors.transparent,

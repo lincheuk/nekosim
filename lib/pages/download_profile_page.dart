@@ -1,4 +1,4 @@
-import 'dart:convert';
+﻿import 'dart:convert';
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import '../l10n/app_localizations.dart';
@@ -11,6 +11,7 @@ import '../utils/hex_utils.dart';
 import '../utils/iccid_formatter.dart';
 import '../widgets/common/simple_dialog_container.dart';
 import '../widgets/common/loading_spinner.dart';
+import '../widgets/nekosim_glass.dart';
 import '../widgets/styled_header_scaffold.dart';
 import '../theme/app_theme.dart';
 import '../logic/profile_download_session.dart';
@@ -1222,20 +1223,9 @@ class _DownloadProfilePageState extends State<DownloadProfilePage> {
           // Elegant Info Section
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-            decoration: BoxDecoration(
-              color: theme.colorScheme.surface,
-              borderRadius: BorderRadius.circular(24),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withValues(alpha: 0.03),
-                  blurRadius: 16,
-                  offset: const Offset(0, 4),
-                ),
-              ],
-              border: Border.all(
-                color: theme.colorScheme.primary.withValues(alpha: 0.05),
-                width: 1.5,
-              ),
+            decoration: glassCardDecoration(
+              context,
+              borderRadius: const BorderRadius.all(Radius.circular(24)),
             ),
             child: Column(
               children: [
@@ -1375,20 +1365,9 @@ class _DownloadProfilePageState extends State<DownloadProfilePage> {
             const SizedBox(height: 16),
             Container(
               padding: const EdgeInsets.all(20),
-              decoration: BoxDecoration(
-                color: theme.colorScheme.surface,
-                borderRadius: BorderRadius.circular(24),
-                border: Border.all(
-                  color: theme.colorScheme.primary.withValues(alpha: 0.08),
-                  width: 1.5,
-                ),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withValues(alpha: 0.02),
-                    blurRadius: 12,
-                    offset: const Offset(0, 4),
-                  ),
-                ],
+              decoration: glassCardDecoration(
+                context,
+                borderRadius: const BorderRadius.all(Radius.circular(24)),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

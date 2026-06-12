@@ -91,12 +91,14 @@ class _NotificationCardState extends State<NotificationCard>
           final pulse = widget.isDeleting ? _borderController.value : 0.0;
           return Container(
             decoration: BoxDecoration(
-              color: theme.colorScheme.surface,
+              color: theme.colorScheme.surface
+                  .withValues(alpha: isDark ? 0.62 : 0.72),
               borderRadius: BorderRadius.circular(16),
               border: Border.all(
                 color: widget.isDeleting
                     ? deleteColor.withValues(alpha: 0.45 + pulse * 0.45)
-                    : AppTheme.surfaceSubtle(context),
+                    : (isDark ? Colors.white : Colors.black)
+                        .withValues(alpha: isDark ? 0.10 : 0.06),
                 width: widget.isDeleting ? 1.5 + pulse * 1.5 : 1,
               ),
               boxShadow: [

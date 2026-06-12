@@ -858,7 +858,9 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
             child: Card(
               elevation: 0,
               margin: EdgeInsets.zero,
-              color: theme.colorScheme.surface,
+              color: theme.colorScheme.surface.withValues(
+                alpha: theme.brightness == Brightness.dark ? 0.62 : 0.72,
+              ),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(16),
               ),
@@ -1041,7 +1043,9 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
           margin: const EdgeInsets.all(24),
           padding: const EdgeInsets.all(24),
           decoration: BoxDecoration(
-            color: theme.colorScheme.surface,
+            color: theme.colorScheme.surface.withValues(
+              alpha: theme.brightness == Brightness.dark ? 0.62 : 0.72,
+            ),
             borderRadius: BorderRadius.circular(24),
             border: Border.all(color: Colors.red.withValues(alpha: 0.2)),
             boxShadow: [

@@ -1,7 +1,8 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import '../../services/profile_metadata_service.dart';
 import '../../utils/iccid_formatter.dart';
 import '../../theme/app_theme.dart';
+import '../../widgets/nekosim_glass.dart';
 import '../../widgets/styled_header_scaffold.dart';
 
 import '../l10n/app_localizations.dart';
@@ -87,18 +88,9 @@ class _ReminderDetailsPageState extends State<ReminderDetailsPage> {
             // Header Card
             Container(
               padding: const EdgeInsets.all(24),
-              decoration: BoxDecoration(
-                color: theme.colorScheme.surface,
-                borderRadius: BorderRadius.circular(24),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withValues(
-                      alpha: theme.brightness == Brightness.dark ? 0.3 : 0.05,
-                    ),
-                    blurRadius: 20,
-                    offset: const Offset(0, 10),
-                  ),
-                ],
+              decoration: glassCardDecoration(
+                context,
+                borderRadius: const BorderRadius.all(Radius.circular(24)),
               ),
               child: Column(
                 children: [

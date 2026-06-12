@@ -1,6 +1,7 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../../theme/app_theme.dart';
+import '../nekosim_glass.dart';
 import '../../adapter/euicc_adapter.dart';
 import '../../utils/profile_redaction.dart';
 import '../common/reader_api_icon.dart';
@@ -20,17 +21,9 @@ Widget buildReaderDropdown({
   return Container(
     width: double.infinity,
     height: 54,
-    decoration: BoxDecoration(
-      color: theme.colorScheme.surface,
-      borderRadius: BorderRadius.circular(14),
-      border: Border.all(color: theme.dividerColor),
-      boxShadow: [
-        BoxShadow(
-          color: Colors.black.withValues(alpha: 0.05),
-          blurRadius: 10,
-          offset: const Offset(0, 4),
-        ),
-      ],
+    decoration: glassCardDecoration(
+      context,
+      borderRadius: const BorderRadius.all(Radius.circular(14)),
     ),
     child: LayoutBuilder(
       builder: (context, c) {
